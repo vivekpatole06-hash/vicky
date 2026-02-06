@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day Jiya 🌹</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Romantic Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  background:linear-gradient(135deg,#7b0f1a,#ff4d6d);
+  color:#fff;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
+
+section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.glass{
+  max-width:360px;
+  width:100%;
+  background:rgba(255,255,255,0.18);
+  backdrop-filter:blur(18px);
+  border-radius:26px;
+  padding:38px 26px;
+  text-align:center;
+  box-shadow:0 25px 50px rgba(0,0,0,0.35);
+  animation:float 4s ease-in-out infinite;
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+h2{
+  font-family:'Dancing Script',cursive;
+  font-size:30px;
+  margin:12px 0;
+  animation:glow 2.5s infinite;
+}
+
+p{
+  font-family:'Dancing Script',cursive;
+  font-size:19px;
+  line-height:1.6;
+  margin:14px 0;
+}
+
+.emoji{
+  font-size:70px;
+  margin:18px 0;
+  animation:pulse 2s infinite;
+}
+
+button{
+  margin-top:20px;
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background:rgba(255,255,255,0.3);
+  color:#fff;
+  font-size:15px;
+  cursor:pointer;
+}
+button:hover{
+  background:rgba(255,255,255,0.5);
+  transform:scale(1.05);
+}
+
+.counter{
+  margin:14px 0;
+  font-size:16px;
+  opacity:0.95;
+}
+
+.type{
+  min-height:60px;
+  margin-top:10px;
+}
+
+.hearts{
+  font-size:26px;
+  margin-top:18px;
+  animation:pulse 1.3s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.12);}
+}
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+@keyframes glow{
+  0%,100%{text-shadow:0 0 6px #ffd6e8;}
+  50%{text-shadow:0 0 18px #ffb3c6;}
+}
+
+/* Falling Roses */
+.petal{
+  position:fixed;
+  top:-10%;
+  font-size:22px;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  0%{transform:translateY(-10vh) rotate(0deg);}
+  100%{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* Click Hearts */
+.click-heart{
+  position:fixed;
+  font-size:18px;
+  animation:rise 1.2s ease-out forwards;
+}
+@keyframes rise{
+  0%{opacity:1;transform:translateY(0);}
+  100%{opacity:0;transform:translateY(-70px);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Soft Romantic Music -->
+<audio autoplay loop>
+  <source src="https://files.catbox.moe/6k4c0e.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SECTION 1 -->
+<section>
+  <div class="glass">
+    <h1>🌹 Happy Rose Day 🌹</h1>
+    <h2>Jiya</h2>
+    <div class="emoji">🌹</div>
+    <p>
+      A rose for you,<br>
+      not just for today,<br>
+      but for every feeling you bring into my life.
+    </p>
+    <button onclick="next()">Scroll 💖</button>
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<section>
+  <div class="glass">
+    <h1>My Rose</h1>
+    <div class="emoji">🌹</div>
+    <p>
+      Some people give flowers,<br>
+      some people become one.
+    </p>
+    <p>
+      Tumhari ek muskaan,<br>
+      mere din ko mehka deti hai.
+    </p>
+    <button onclick="next()">One More 🌸</button>
+  </div>
+</section>
+
+<!-- SECTION 3 -->
+<section>
+  <div class="glass">
+    <h2>Jiya ❤️</h2>
+
+    <p class="counter">
+      It’s been <b>167</b> beautiful days since we met ✨
+    </p>
+
+    <p>
+      24 August 2025 —<br>
+      woh din jab tum sirf ek rose nahi,<br>
+      meri zindagi ki khushboo ban gayi.
+    </p>
+
+    <!-- YOUR LINE ADDED -->
+    <p>
+      I love you the most, my misty 🤍<br>
+      And I’m so happy that I’m celebrating Valentine Week with you.<br>
+      Love you the most… always.
+    </p>
+
+    <p class="type" id="typeText"></p>
+
+    <div class="hearts">💖 💕 💘</div>
+  </div>
+</section>
+
+<script>
+function next(){
+  window.scrollBy({top:innerHeight,behavior:'smooth'});
+}
+
+/* Typewriter Promise */
+const msg="Rose Day ho ya koi aur din, meri pasand hamesha tum hi rahogi. 🌹❤️";
+let i=0;
+(function type(){
+  if(i<msg.length){
+    document.getElementById("typeText").innerHTML+=msg.charAt(i);
+    i++; setTimeout(type,60);
+  }
+})();
+
+/* Falling Roses */
+for(let i=0;i<24;i++){
+  const p=document.createElement("div");
+  p.className="petal";
+  p.innerHTML="🌹";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=6+Math.random()*6+"s";
+  p.style.opacity=Math.random();
+  document.body.appendChild(p);
+}
+
+/* Click Hearts */
+document.addEventListener("click",e=>{
+  const h=document.createElement("div");
+  h.className="click-heart";
+  h.innerHTML="💖";
+  h.style.left=e.clientX+"px";
+  h.style.top=e.clientY+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),1200);
+});
+</script>
+
+</body>
+</html>
